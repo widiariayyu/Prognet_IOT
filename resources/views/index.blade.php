@@ -9,7 +9,9 @@
 		<title>Internet Of Things Weather</title>
 		<link rel="stylesheet" href="{{asset('css/app.css')}}">
 		<link rel="stylesheet" href="{{asset('css/main.css')}}">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<!-- Loading third party fonts -->
+		<link rel="stylesheet" type="text/css" href="{{asset('theme/weather-icons/css/weather-icons.min.css')}}">
 		<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
 		<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 
@@ -40,9 +42,21 @@
 						</a>
 						{{--  navbar  --}}
 						<div class="main-navigation">
-							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 							<ul class="menu">
-								<li class="menu-item current-menu-item"><a href="/">Home</a></li>
+								
+								<div class="logo-type">
+									<small class="site-description">Time Refresh</small>
+								</div>
+								   <select class="custom-select" id="sel1" style="background-color:#28292f; color: white; border-color: #5dade2;">
+								        <option>--Select The Time--</option>
+								        <option>every minutes</option>
+								        <option>every hours</option>
+								   </select>	
+							</ul>
+
+							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+							<ul class="menu"  style="margin-top: 20px;">
+								<li class="menu-item current-menu-item"><a href="/">Submit</a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,8 +69,8 @@
 						<div class="today forecast">
 						
 							<div class="forecast-header">
-								<div class="day">Rainfalls</div>
-								<div class="date">{{date('jS F Y h:i:s A')}}</div>
+								<div class="day">Rainfall</div>
+								<div class="date">{{date('jS F Y ')}}</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location">Bukit</div>
@@ -64,22 +78,24 @@
 								<div class="degree">
 									<div class="num "> &nbspM</div>
 									<div class="forecast-icon">
-										<img src="images/icons/icon-1.svg" alt="" width=90>
+										<img src="{{ asset('theme/images/icons/icon-10.svg')}}" alt="" width=90>
 									</div>	
 								</div>
-								<span><img src="images/icon-umberella.png" alt="">%</span>
+								<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">%</span>
 								{{-- <!-- @if(count($widths)) --> --}}
 								{{-- @foreach($widths as $wd) --}}
-								<span><img src="images/icon-wind.png" alt="">22km/h</span>
+								<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">22km/h</span>
 								{{-- @endforeach
 								<!-- @endif --> --}}
-								<span><img src="images/icon-compass.png" alt="">East</span>
+								<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 							</div>
+						<canvas id="myChart" style="width: 300px; height:150px !important"></canvas>
 						</div>
+						
 						<div class="today forecast">
 							<div class="forecast-header">
 								<div class="day">Humidities</div>
-								<div class="date">{{date('jS F Y h:i:s A')}}</div>
+								<div class="date">{{date('jS F Y ')}}</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location">Bukit</div>
@@ -87,13 +103,15 @@
 									<div class="num">
 										<sup>o</sup>C</div>
 									<div class="forecast-icon">
-										<img src="images/icons/icon-1.svg" alt="" width=90>
+										<img src="{{asset('theme/images/humidity.png')}}" alt="" width=90>
 									</div>	
 								</div>
-								<span><img src="images/icon-umberella.png" alt="">%</span>
-								<span><img src="images/icon-wind.png" alt="">km/h</span>
-								<span><img src="images/icon-compass.png" alt="">East</span>
+								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">%</span>
+								<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">km/h</span>
+								<span><img src="{{asset('images/icon-compass.png')}}" alt="">East</span>
 							</div>
+							<canvas id="ChartHumid" style="width: 300px; height:150px !important"></canvas>
+			
 						</div>
 					</div>
 				</div>
@@ -105,31 +123,33 @@
 						<div class="today forecast">
 						
 							<div class="forecast-header">
-								<div class="day">Widths</div>
-								<div class="date">{{date('jS F Y h:i:s A')}}</div>
+								<div class="day">Wind</div>
+								<div class="date">{{date('jS F Y ')}}</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location">Bukit</div>
 								
 								<div class="degree">
-									<div class="num"><p id="data_dummy"></p> M</div>
+									<div class="num"><p id="data_dummy"></p></div>
 									<div class="forecast-icon">
-										<img src="images/icons/icon-1.svg" alt="" width=90>
+										<img src="{{asset('theme/images/wind.png')}}" alt="" width=90>
 									</div>	
 								</div>
-								<span><img src="images/icon-umberella.png" alt="">%</span>
+								<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">%</span>
 								{{-- <!-- @if(count($widths)) --> --}}
 								{{-- @foreach($widths as $wd) --}}
-								<span><img src="images/icon-wind.png" alt="">22km/h</span>
+								<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">22km/h</span>
 								{{-- @endforeach
 								<!-- @endif --> --}}
-								<span><img src="images/icon-compass.png" alt="">East</span>
+								<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 							</div>
+							<canvas id="ChartWind" style="width: 300px; height:150px !important"></canvas>
 						</div>
+						
 						<div class="today forecast">
 							<div class="forecast-header">
 								<div class="day">Temperatures</div>
-								<div class="date">{{date('jS F Y h:i:s A')}}</div>
+								<div class="date">{{date('jS F Y ')}}</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location">Bukit</div>
@@ -137,17 +157,21 @@
 									<div class="num">
 										<sup>o</sup>C</div>
 									<div class="forecast-icon">
-										<img src="images/icons/icon-1.svg" alt="" width=90>
+										<img src="{{asset('theme/images/thermometer-blue.png')}}" alt="" width=90>
 									</div>	
 								</div>
-								<span><img src="images/icon-umberella.png" alt="">%</span>
-								<span><img src="images/icon-wind.png" alt="">km/h</span>
-								<span><img src="images/icon-compass.png" alt="">East</span>
+								<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">%</span>
+								<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">km/h</span>
+								<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 							</div>
+							<canvas id="ChartTemper" style="width: 300px; height:150px !important"></canvas>
 						</div>
+						
 					</div>
 				</div>
 			</div>
+			
+
 
 			<footer class="site-footer">
 				<div class="container">
@@ -165,9 +189,13 @@
 				</div>
 			</footer>
 		</div>
+		</div>
+		
 		<script src="{{ asset('theme/js/app.js') }}"></script>	
 		{{-- <script src="{{ asset('theme/js/jquery-1.11.1.min.js') }}"></script> --}}
 		<script src="{{ asset('theme/js/plugins.js') }}"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
@@ -215,6 +243,151 @@
 				console.log(err)
 			}
 		  
+
+		 var ctx = document.getElementById("myChart").getContext('2d');
+			var myChart = new Chart(ctx, {
+			    type: 'bar',
+			    data: {
+			        labels: ["Rainfall", "Humidities", "Wind", "Temperatures"],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [12, 19, 3, 5, 2, 3],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)'
+			                
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)'
+			                
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});
+				
+			var ctx = document.getElementById("ChartHumid").getContext('2d');
+			var myChart = new Chart(ctx, {
+			    type: 'bar',
+			    data: {
+			        labels: ["Rainfall", "Humidities", "Wind", "Temperatures"],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [12, 19, 3, 5, 2, 3],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)'
+			                
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)'
+			                
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});		
+
+			var ctx = document.getElementById("ChartWind").getContext('2d');
+			var myChart = new Chart(ctx, {
+			    type: 'bar',
+			    data: {
+			        labels: ["Rainfall", "Humidities", "Wind", "Temperatures"],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [12, 19, 3, 5, 2, 3],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)'
+			                
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)'
+			                
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});		
+
+			var ctx = document.getElementById("ChartTemper").getContext('2d');
+			var myChart = new Chart(ctx, {
+			    type: 'bar',
+			    data: {
+			        labels: ["Rainfall", "Humidities", "Wind", "Temperatures"],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [12, 19, 3, 5, 2, 3],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)'
+			                
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)'
+			                
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});		
+		</script>
 
 		</script>
 		
