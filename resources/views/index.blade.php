@@ -62,7 +62,7 @@
 								<div class="location">Bukit</div>
 								
 								<div class="degree">
-									<div class="num "> &nbspM</div>
+									<div class="num "><span id="hujan"></span> M</div>
 									<div class="forecast-icon">
 										<img src="images/icons/icon-1.svg" alt="" width=90>
 									</div>	
@@ -85,6 +85,7 @@
 								<div class="location">Bukit</div>
 								<div class="degree">
 									<div class="num">
+										<span id="kelembaban"></span>
 										<sup>o</sup>C</div>
 									<div class="forecast-icon">
 										<img src="images/icons/icon-1.svg" alt="" width=90>
@@ -105,14 +106,14 @@
 						<div class="today forecast">
 						
 							<div class="forecast-header">
-								<div class="day">Widths</div>
+								<div class="day">Wind</div>
 								<div class="date">{{date('jS F Y h:i:s A')}}</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location">Bukit</div>
 								
 								<div class="degree">
-									<div class="num"><p id="data_dummy"></p> M</div>
+									<div class="num"><span id="angin"></span> M</div>
 									<div class="forecast-icon">
 										<img src="images/icons/icon-1.svg" alt="" width=90>
 									</div>	
@@ -135,6 +136,7 @@
 								<div class="location">Bukit</div>
 								<div class="degree">
 									<div class="num">
+										<span id="temperatur"></span>
 										<sup>o</sup>C</div>
 									<div class="forecast-icon">
 										<img src="images/icons/icon-1.svg" alt="" width=90>
@@ -196,17 +198,16 @@
 
 
 		  /////////////////////////////////////////
-		  var db = firebase.database().ref('widths').child("1");
-		  var db2 = firebase.database().ref('widths').child("2");
+		  var db = firebase.database().ref("cuaca/1/angin");
 		  //var db = firebase.database().ref('widths');
 				 // var widthsRef = db.ref('widths');
-		  var data_dummy = document.getElementById('data_dummy');
-		  var data_dummy2 = document.getElementById('data_dummy2');
+		  var hujan = document.getElementById('hujan');
+		  var kelembaban = document.getElementById('kelembaban');
+		  var angin = document.getElementById('angin');
+		  var temperatur = document.getElementById('temperatur');
 		
-		  db.on('value', snap => data_dummy.innerText =Object.values(snap.val()));
-		  db2.on('value', snap => data_dummy2.innerText =Object.values(snap.val()));		  
-
-
+		  db.on('value', snap => angin.innerHTML =Object.values(snap.val()));
+		  
 		  //////////////////////////////////////////
 		  function showData(items){
 			  console.log(items.val())
