@@ -14,20 +14,29 @@
 				</a>
 				{{--  navbar  --}}
 				<div class="main-navigation">
-					<ul class="menu">	
+					<ul class="menu"  style="margin-top: 20px;">
+						<li class="menu-item"><a href="{{url('/')}}">Home</a></li>
+						<li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
+						{{--  <li class="btn btn-primary"><a href="/">Submit</a></li>  --}}
+					</ul>
+					<ul class="menu">
+							{{--  <li class="menu-item"><a href="news.html">News</a></li>		  --}}
 						<div class="logo-type">
 							<small class="site-description">Time Refresh</small>
 						</div>
-						   <select class="custom-select" id="sel1" style="background-color:#28292f; color: white; border-color: #5dade2;">
-								<option>--Select The Time--</option>
-								<option>every minutes</option>
-								<option>every hours</option>
-						   </select>	
+						{{--  <input type="text" id="save_data" class="form-control custom-select">  --}}
+						<select class="custom-select" id="save_data" style="background-color:#28292f; color: white; border-color: #5dade2;">
+							<option>--Select The Time--</option>
+							<option value="60">every 1 minutes</option>
+							<option value="1800">every 30 minutes</option>
+							<option value="3600">every 1 hours</option>
+						</select>
 					</ul>
-					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-					<ul class="menu"  style="margin-top: 20px;">
-						<li class="menu-item current-menu-item"><a href="/">Submit</a></li>
-					</ul>
+					{{-- <button type="submit" id="save_btn" onclick="savedata()" class="menu-toggle"><i class="fa fa-bars"></i></button> --}}
+					<ul type="submit" id="save_btn" class="menu"  style="margin-top: 20px;">
+						<button class="btn btn-primary">Submit</button>
+						{{--  <li class="btn btn-primary"><a href="/">Submit</a></li>  --}}
+					</ul>					
 				</div>
 			</div>
 		</div>
@@ -81,7 +90,7 @@
 						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">km/h</span>
 						<span><img src="{{asset('images/icon-compass.png')}}" alt="">East</span>
 					</div>
-					<canvas id="ChartHumid" style="width: 300px; height:150px !important"></canvas>
+					{{-- <canvas id="ChartHumid" style="width: 300px; height:150px !important"></canvas> --}}
 	
 				</div>
 			</div>

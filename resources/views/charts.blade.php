@@ -34,7 +34,7 @@
         <div class="forecast-table forest-margin">
                 <div class="container">
                     <div class="forecast-container">
-                        <canvas id="myChart" style="width: 300px; height:150px !important"></canvas>
+                        <canvas id="sales-chart" style="width: 300px; height:150px !important "></canvas>
                     </div>
                     </div>
                 </div>

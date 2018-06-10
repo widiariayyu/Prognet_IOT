@@ -47,7 +47,67 @@
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
         <script src="{{ asset('js/include.js')}}"></script>
         
-        
+        <script>
+				var config = {
+					apiKey: "AIzaSyD31ZLIBbyPB4UFYCkzebSlcL7AmniZgPg",
+					authDomain: "weatherstation-97401.firebaseapp.com",
+					databaseURL: "https://weatherstation-97401.firebaseio.com",
+					projectId: "weatherstation-97401",
+					storageBucket: "weatherstation-97401.appspot.com",
+					messagingSenderId: "494211813974"
+				};
+				firebase.initializeApp(config);
+				var db = firebase.database();
+				var rootRef = db.ref('service');
+				
+				$('#save_btn').click(function(){
+					
+					rootRef.set({
+						waktu:$('#save_data').val()
+					});
+					//console.log({save_data: $('#save_data').val()});
+				});
+				
+/*
+				function savedata(){
+					rootRef.set({
+						save_data: $('save_data').val();
+						//document.getElementById("save_").innerHTML = "Hello World";
+						
+					});
+				}*/
+				
+				/*
+				rootRef.on('value',showData,showEror);
+				function showData(items){	 		 
+					console.log(items.val())	
+				}	 		  
+				  function showEror(err){	 
+					  console.log(err)	 	
+				}	 			
+				*/
+				/*	function savedata(){
+						var rootRef = db.ref('confirm');
+						rootRef.push({
+							name: "John",
+
+						});
+					} */
+					//NoSQL
+		/*			var db =  firebase.database();
+					var playersRef = db.ref('players');
+					playersRef.push ({
+					   name: "John",
+					   number: 1,
+					   age: 30
+					});
+					
+					playersRef.push ({
+					   name: "Amanda",
+					   number: 2,
+					   age: 20
+					});			*/
+		</script>
 	</body>
 
 </html>
