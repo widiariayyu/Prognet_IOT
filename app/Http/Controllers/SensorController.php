@@ -20,7 +20,7 @@ class SensorController extends Controller
     public function chart()
     {
         // baru mau buat count
-        // $tambah = Sensor::all() ->count();
+        $tambah = Sensor::all() ->count();
         // echo $tambah;
         
         // codingan asli
@@ -28,23 +28,6 @@ class SensorController extends Controller
         FROM sensor  WHERE id IN (SELECT MAX(id) FROM sensor 
         GROUP BY HOUR(`created_at`), DAY(`created_at`))
         ORDER BY ID DESC LIMIT 21'));
-        // ->limit(20);
-
-        // $result = array_column($result, 'result');
-        // return view ('charts')
-        //     ->with('result',json_encode($result,JSON_NUMERIC_CHECK));
-        // ->get();
-
-        // $result = \DB::table('sensor')
-        // ->select('id','widhts','rainfalls','humidities','temperatures',DB::raw('HOUR(created_at) as hour'),DB::raw('MINUTE(created_at) as minute')
-        //         ,DB::raw('DAY(created_at) as day'))
-        // ->groupBy(DB::raw("HOUR('created_at')"))
-        // ->groupBy(DB::raw("MINUTE('created_at')"))
-        // ->get();
-
-        // var_dump($result);
-
-
 
         return response()->json($result);
     }

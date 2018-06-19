@@ -49,7 +49,6 @@
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-messaging.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-        <script src="{{ asset('js/include.js')}}"></script>
         
         <script>
 				var config = {
