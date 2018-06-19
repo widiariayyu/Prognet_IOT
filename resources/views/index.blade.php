@@ -88,7 +88,7 @@
 						</div>
 						<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">%</span>
 						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">km/h</span>
-						<span><img src="{{asset('images/icon-compass.png')}}" alt="">East</span>
+						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 					</div>
 					{{-- <canvas id="ChartHumid" style="width: 300px; height:150px !important"></canvas> --}}
 	

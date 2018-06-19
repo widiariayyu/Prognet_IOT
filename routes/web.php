@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/charts', function () {
-    return view('charts');
-});
+Route::get('/charts', 'SensorController@index')->name('charts');
+Route::get('/charts/chart', 'SensorController@chart')->name('charts');
