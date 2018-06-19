@@ -3,6 +3,7 @@
 
 @section('index')
 <div class="site-content">
+	@foreach($weather as $wth)
 		<div class="site-header header-nav">
 			<div class="container">
 				<a href="index.html" class="branding">
@@ -55,15 +56,15 @@
 						<div class="location">Bukit</div>
 						
 						<div class="degree">
-							<div class="num "><span id="hujan"></span> M</div>
+							<div class="num "><span id="hujan"></span> {{ $wth->rainfalls }} %</div>
 							<div class="forecast-icon">
 								<img src="{{ asset('theme/images/icons/icon-10.svg')}}" alt="" width=90>
 							</div>	
 						</div>
-						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">%</span>
+						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
 						{{-- <!-- @if(count($widths)) --> --}}
 						{{-- @foreach($widths as $wd) --}}
-						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">22km/h</span>
+						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
 						{{-- @endforeach
 						<!-- @endif --> --}}
 						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
@@ -80,14 +81,14 @@
 						<div class="location">Bukit</div>
 						<div class="degree">
 							<div class="num">
-								<span id="kelembaban"></span>
+								<span id="kelembaban"></span> {{ $wth->humidities }}
 								<sup>o</sup>C</div>
 							<div class="forecast-icon">
 								<img src="{{asset('theme/images/humidity.png')}}" alt="" width=90>
 							</div>	
 						</div>
-						<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">%</span>
-						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">km/h</span>
+						<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">{{ $wth->rainfalls }}%</span>
+						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
 						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 					</div>
 					{{-- <canvas id="ChartHumid" style="width: 300px; height:150px !important"></canvas> --}}
@@ -108,15 +109,15 @@
 					<div class="forecast-content">
 						<div class="location">Bukit</div>
 						<div class="degree">
-							<div class="num"><p id="data_dummy"></p></div>
+							<div class="num"><p id="data_dummy"></p>{{ $wth->widhts }}</div>
 							<div class="forecast-icon">
 								<img src="{{asset('theme/images/wind.png')}}" alt="" width=90>
 							</div>	
 						</div>
-						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">%</span>
+						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
 						{{-- <!-- @if(count($widths)) --> --}}
 						{{-- @foreach($widths as $wd) --}}
-						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">22km/h</span>
+						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
 						{{-- @endforeach
 						<!-- @endif --> --}}
 						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
@@ -133,14 +134,14 @@
 						<div class="location">Bukit</div>
 						<div class="degree">
 							<div class="num">
-								<span id="temperatur"></span>
+								<span id="temperatur"></span>{{ $wth->temperatures }}
 								<sup>o</sup>C</div>
 							<div class="forecast-icon">
 								<img src="{{asset('theme/images/thermometer-blue.png')}}" alt="" width=90>
 							</div>	
 						</div>
-						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">%</span>
-						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">km/h</span>
+						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
+						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
 						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 					</div>
 					{{--  <canvas id="ChartTemper" style="width: 300px; height:150px !important"></canvas>  --}}
@@ -165,6 +166,7 @@
 			<p class="colophon">Copyright 2018 Weather Stations. All rights reserved</p>
 		</div>
 	</footer>
+	@endforeach
 </div>
-</div>
+
 @endsection
