@@ -17,6 +17,7 @@
 					<ul class="menu"  style="margin-top: 20px;">
 						<li class="menu-item"><a href="{{url('/')}}">Home</a></li>
 						<li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
+						<li class="menu-item"><a href="{{url('gallery')}}">Gallery</a></li>
 						{{--  <li class="btn btn-primary"><a href="/">Submit</a></li>  --}}
 					</ul>
 					<ul class="menu">

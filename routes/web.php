@@ -19,6 +19,7 @@ Route::get('/','SensorController@weather');
 
 Route::get('/charts', 'SensorController@index')->name('charts');
 Route::get('/charts/chart', 'SensorController@chart')->name('charts');
+Route::get('/gallery', 'SensorController@gallery')->name('gallery');
 // Route::get('/weather', 'SensorController@weather')->name('weather');
 
 // coba jalanin

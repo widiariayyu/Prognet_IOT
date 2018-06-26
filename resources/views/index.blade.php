@@ -4,6 +4,7 @@
 @section('index')
 <div class="site-content">
 	@foreach($weather as $wth)
+		
 		<div class="site-header header-nav">
 			<div class="container">
 				<a href="index.html" class="branding">
@@ -18,6 +19,7 @@
 					<ul class="menu"  style="margin-top: 20px;">
 						<li class="menu-item"><a href="{{url('/')}}">Home</a></li>
 						<li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
+						<li class="menu-item"><a href="{{url('gallery')}}">Gallery</a></li>
 						{{--  <li class="btn btn-primary"><a href="/">Submit</a></li>  --}}
 					</ul>
 					<ul class="menu">
@@ -58,10 +60,10 @@
 						<div class="degree">
 							<div class="num "><span id="hujan"></span> {{ $wth->rainfalls }} %</div>
 							<div class="forecast-icon">
-								<img src="{{ asset('theme/images/icons/icon-10.svg')}}" alt="" width=90>
+								<img class="icon-sensor" src="{{ asset('theme/images/icons/icon-10.svg')}}" alt="">
 							</div>	
 						</div>
-						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
+						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rain }}%</span>
 						{{-- <!-- @if(count($widths)) --> --}}
 						{{-- @foreach($widths as $wd) --}}
 						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
@@ -69,7 +71,7 @@
 						<!-- @endif --> --}}
 						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 					</div>
-				{{--  <canvas id="myChart" style="width: 300px; height:150px !important"></canvas>  --}}
+			
 				</div>
 				
 				<div class="today forecast">
@@ -84,72 +86,107 @@
 								<span id="kelembaban"></span> {{ $wth->humidities }}
 								<sup>o</sup>C</div>
 							<div class="forecast-icon">
-								<img src="{{asset('theme/images/humidity.png')}}" alt="" width=90>
+								<img class="icon-sensor" src="{{asset('theme/images/humidity.png')}}" alt="">
 							</div>	
 						</div>
 						<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">{{ $wth->rainfalls }}%</span>
 						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
 						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 					</div>
-					{{-- <canvas id="ChartHumid" style="width: 300px; height:150px !important"></canvas> --}}
+				
 	
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="forecast-table forest-margin">
+	<div class="forecast-table forest-margin" >
 		<div class="container">
 			<div class="forecast-container">
-				<div class="today forecast">
-					<div class="forecast-header">
-						<div class="day">Wind</div>
-						<div class="date">{{date('jS F Y ')}}</div>
-					</div> <!-- .forecast-header -->
-					<div class="forecast-content">
-						<div class="location">Bukit</div>
-						<div class="degree">
-							<div class="num"><p id="data_dummy"></p>{{ $wth->widhts }}</div>
-							<div class="forecast-icon">
-								<img src="{{asset('theme/images/wind.png')}}" alt="" width=90>
-							</div>	
+
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="today forecast">
+						<div class="forecast-header">
+							<div class="day">Wind</div>
+							<div class="date">{{date('jS F Y ')}}</div>
+						</div> <!-- .forecast-header -->
+						<div class="forecast-content">
+							<div class="location">Bukit</div>
+							<div class="degree">
+								<div class="num"><p id="data_dummy"></p>{{ $wth->widhts }} km/h</div>
+								<div class="forecast-icon">
+									<img class="icon-sensor" src="{{asset('theme/images/wind.png')}}" alt="" width="60" >
+								</div>	
+							</div>
+							<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
+							{{-- <!-- @if(count($widths)) --> --}}
+							{{-- @foreach($widths as $wd) --}}
+							<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
+							{{-- @endforeach
+							<!-- @endif --> --}}
+							<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 						</div>
-						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
-						{{-- <!-- @if(count($widths)) --> --}}
-						{{-- @foreach($widths as $wd) --}}
-						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
-						{{-- @endforeach
-						<!-- @endif --> --}}
-						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
 					</div>
-					{{--  <canvas id="ChartWind" style="width: 300px; height:150px !important"></canvas>  --}}
 				</div>
+				<div class="col-sm-4">
+					<div class="today forecast" >
+						<div class="forecast-header">
+							<div class="day">Temperatures</div>
+							<div class="date">{{date('jS F Y ')}}</div>
+						</div> <!-- .forecast-header -->
+						<div class="forecast-content" >
+							<div class="location">Bukit</div>
+							<div class="degree" >
+								<div class="num">
+									<span id="temperatur"></span>{{ $wth->temperatures }}
+									<sup>o</sup>C</div>
+								<div class="forecast-icon">
+									<img class="icon-sensor" src="{{asset('theme/images/thermometer-blue.png')}}" alt="">
+								</div>	
+							</div>
+							<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
+							<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
+							<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
+						</div>
+						{{--  <canvas id="ChartTemper" style="width: 300px; height:150px !important"></canvas>  --}}
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="today forecast">
+						<div class="forecast-header">
+							<div class="day">Intensity</div>
+							<div class="date">{{date('jS F Y ')}}</div>
+						</div> 
+						<div class="forecast-content">
+							<div class="location">Bukit</div>
+							<div class="degree">
+								<div class="num">
+									<span id="temperatur"></span>{{ $wth->intensity }}
+									<sup>o</sup>C</div>
+								<div class="forecast-icon">
+									<img class="icon-sensor" src="{{asset('theme/images/icons/icon-1.svg')}}" alt="" >
+								</div>	
+							</div>
+							<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
+							<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
+							<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
+						</div>
+						
+					</div>
+				</div>
+			</div> 			
+
 				
-				<div class="today forecast">
-					<div class="forecast-header">
-						<div class="day">Temperatures</div>
-						<div class="date">{{date('jS F Y ')}}</div>
-					</div> <!-- .forecast-header -->
-					<div class="forecast-content">
-						<div class="location">Bukit</div>
-						<div class="degree">
-							<div class="num">
-								<span id="temperatur"></span>{{ $wth->temperatures }}
-								<sup>o</sup>C</div>
-							<div class="forecast-icon">
-								<img src="{{asset('theme/images/thermometer-blue.png')}}" alt="" width=90>
-							</div>	
-						</div>
-						<span><img src="{{asset('theme/images/icon-umberella.png')}}" alt="">{{ $wth->rainfalls }}%</span>
-						<span><img src="{{asset('theme/images/icon-wind.png')}}" alt="">{{ $wth->widhts }}km/h</span>
-						<span><img src="{{asset('theme/images/icon-compass.png')}}" alt="">East</span>
-					</div>
-					{{--  <canvas id="ChartTemper" style="width: 300px; height:150px !important"></canvas>  --}}
-				</div>
+
+
+						
+
 				
 			</div>
 		</div>
 	</div>
+	
 	
 	<footer class="site-footer">
 		<div class="container">

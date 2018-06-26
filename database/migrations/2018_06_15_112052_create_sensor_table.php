@@ -19,6 +19,8 @@ class CreateSensorTable extends Migration
             $table->string('rainfalls')->nullable();
             $table->string('humidities')->nullable();
             $table->string('temperatures')->nullable();
+            $table->string('intensity')->nullable();
+            $table->string('rain')->nullable();
             $table->timestamps();
         });
     }

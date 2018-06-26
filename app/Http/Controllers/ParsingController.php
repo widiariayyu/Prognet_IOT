@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sensor;
-use DB;
-class SensorController extends Controller
+
+class ParsingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,44 +13,11 @@ class SensorController extends Controller
      */
     public function index()
     {
-        return view ('charts');
+        //
     }
 
-    public function chart()
-    {
-        
-        $result = DB::select( 
-            DB::raw('SELECT 
-                        a.*, 
-                        HOUR(`created_at`) AS jam,  
-                        MINUTE(`created_at`) AS menit, 
-                        DAY(`created_at`) AS tanggal,  
-                        CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu   
-                    FROM  
-                        sensor a   
-                    INNER JOIN  
-                        (SELECT MAX(id) id FROM Sensor GROUP BY HOUR(`created_at`), DAY(`created_at`) ORDER BY id DESC LIMIT 21) b 
-                        ON a.id=b.id 
-                    ORDER BY  
-                        id ASC') 
-        ); 
-
-        return $result; 
-    
-    }
-
-    public function weather()
-    {
-        // return view('index');
-        // ke make variabel 
-        $weather = Sensor::orderBy('id','desc')
-                                ->take(1)
-                                ->get()
-                                ->sortByDesc('created_at');
-        return view ('index',compact('weather'));
-    }
     /**
-     * Show the form for creating a new resource.   
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -115,10 +81,4 @@ class SensorController extends Controller
     {
         //
     }
-
-    public function gallery()
-    {
-        return view ('gallery');
-    }
-    
 }
