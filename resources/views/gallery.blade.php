@@ -104,15 +104,21 @@
                             <img src="{{ asset('img/1.jpg')}}" alt="">
                         </a>
                     </div>
-                </div>
-
-                
+                </div>        
             </div>
         </div>
     </section>
-  
-  </div>
+    </div>
+    <div class="container">
 
+        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA7MbYys7PWpzyY9xQcwlW88styrWjH-JM&callback=initMap'></script><div style='overflow:hidden;height:400px;width:100%px;'><div id='gmap_canvas' style='height:400px;width:100%;'></div><div><small>
+            <a href="embedgooglemaps.com/">
+                https:/embedgooglemaps.com
+            </a></small></div><div><small>
+            <a href="http://www.kumo-racing.nl/">source</a></small>
+        </div>
+        <style>#gmap_canvas img{max-width:none!important;background:none!important;padding-bottom: 20px}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(-8.796098,115.176463),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-8.795688799999999,115.17695520000007)});infowindow = new google.maps.InfoWindow({content:'<strong>Weather Stations</strong><br>Bukit, Teknologi Informasi Fakultas Teknik Udayana<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>    
+    </div>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">

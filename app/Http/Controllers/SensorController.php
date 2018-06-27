@@ -19,27 +19,25 @@ class SensorController extends Controller
 
     public function chart()
     {
-        
-        $result = DB::select( 
-            DB::raw('SELECT 
-                        a.*, 
-                        HOUR(`created_at`) AS jam,  
-                        MINUTE(`created_at`) AS menit, 
-                        DAY(`created_at`) AS tanggal,  
-                        CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu   
-                    FROM  
-                        sensor a   
-                    INNER JOIN  
-                        (SELECT MAX(id) id FROM Sensor GROUP BY HOUR(`created_at`), DAY(`created_at`) ORDER BY id DESC LIMIT 21) b 
-                        ON a.id=b.id 
-                    ORDER BY  
-                        id ASC') 
-        ); 
+       
+        $result = DB::select(
+            DB::raw('SELECT
+                        a.*,
+                        HOUR(`created_at`) AS jam, 
+                        MINUTE(`created_at`) AS menit,
+                        DAY(`created_at`) AS tanggal, 
+                        CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu  
+                    FROM 
+                        sensor a  
+                    INNER JOIN 
+                        (SELECT MAX(id) id FROM sensor GROUP BY HOUR(`created_at`), DAY(`created_at`) ORDER BY id DESC LIMIT 21) b
+                        ON a.id=b.id
+                    ORDER BY 
+                        id ASC')
+        );
 
-        return $result; 
-    
+        return $result;
     }
-
     public function weather()
     {
         // return view('index');
