@@ -202,7 +202,7 @@
 					</div>
 					<p class="colophon" style="margin-left:35%">TI Udayana. Designed by TC2016. All rights reserved</p>
 				</div>
-			</footer> <!-- .site-footer -->
+			</footer>
 	@endforeach
 </div>
 
