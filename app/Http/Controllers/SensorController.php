@@ -19,17 +19,34 @@ class SensorController extends Controller
 
     public function chart()
     {
-        // baru mau buat count
-        $tambah = Sensor::all() ->count();
-        // echo $tambah;
-        
-        // codingan asli
-        $result = DB::select(DB::raw('SELECT id,rainfalls,widhts,humidities,temperatures, HOUR(`created_at`) AS jam, MINUTE(`created_at`) AS menit, DAY(`created_at`) AS tanggal, CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu  
-        FROM sensor  WHERE id IN (SELECT MAX(id) FROM sensor 
-        GROUP BY HOUR(`created_at`), DAY(`created_at`))
-        ORDER BY ID DESC LIMIT 21'));
+       
+        $result = DB::select(
+            DB::raw('SELECT
+                        a.*,
+                        HOUR(`created_at`) AS jam, 
+                        MINUTE(`created_at`) AS menit,
+                        DAY(`created_at`) AS tanggal, 
+                        CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu  
+                    FROM 
+                        sensor a  
+                    INNER JOIN 
+                        (SELECT MAX(id) id FROM sensor GROUP BY HOUR(`created_at`), DAY(`created_at`) ORDER BY id DESC LIMIT 21) b
+                        ON a.id=b.id
+                    ORDER BY 
+                        id ASC')
+        );
 
-        return response()->json($result);
+        return $result;
+    }
+    public function weather()
+    {
+        // return view('index');
+        // ke make variabel 
+        $weather = Sensor::orderBy('id','desc')
+                                ->take(1)
+                                ->get()
+                                ->sortByDesc('created_at');
+        return view ('index',compact('weather'));
     }
     /**
      * Show the form for creating a new resource.   
@@ -95,5 +112,18 @@ class SensorController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function parsing(Request $request) 
+    { 
+        // $return = $_POST 
+        $sensor=new Sensor; 
+        $sensor->widhts= $request->widhts; 
+        $sensor->temperatures=$request->temperatures; 
+        $sensor->rainfalls=$request->rainfalls; 
+        $sensor->humidities=$request->humidities; 
+        $sensor->save(); 
+
+        return ['status'=>'sukses']; 
     }
 }
