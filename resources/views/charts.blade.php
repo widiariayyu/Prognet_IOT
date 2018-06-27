@@ -43,17 +43,20 @@
 		</div>
         <div class="forecast-table forest-margin chart-margin">
                 <div class="container">
-                    <div class="forecast-container">
-                        <canvas id="canvasWidths" width="800" height="400"></canvas>
-					</div>
-                    <div id="jarak-chart" class="forecast-container">
-						<canvas id="canvasRainfalls" width="800" height="400"></canvas>
+					<div class="forecast-container">
+                        <canvas id="canvasWind" width="800" height="400"></canvas>
 					</div>
                     <div id="jarak-chart" class="forecast-container">
 						<canvas id="canvasHumidities" width="800" height="400"></canvas>
 					</div>
                     <div id="jarak-chart" class="forecast-container">
+						<canvas id="canvasRainfalls" width="800" height="400"></canvas>
+					</div>
+                    <div id="jarak-chart" class="forecast-container">
 						<canvas id="canvasTemperatures" width="800" height="400"></canvas>
+					</div>
+                    <div id="jarak-chart" class="forecast-container">
+						<canvas id="canvasIntensity" width="800" height="400"></canvas>
 					</div>																
                 </div>
                 </div>
@@ -78,30 +81,54 @@
 <script>
 
 	var url = "{{url('charts/chart')}}";
-	var Widths = new Array();
-	var Rainfalls = new Array();
-	var Prices = new Array();
+	var Wind = new Array();
 	var Humidities = new Array();
+	var Rainfalls = new Array();
 	var Temperatures = new Array();
-	var Waktu =new Array();
+	var Intensity = new Array();
+
 
 	$(document).ready(function(){
 		$.get(url, function(response){
 		response.forEach(function(data){
-			Widths.push(data.widhts);
-			Rainfalls.push(data.rainfalls);
+			Wind.push(data.wind);
 			Humidities.push(data.humidities);
+			Rainfalls.push(data.rainfalls);
 			Temperatures.push(data.temperatures);
-			Waktu.push(data.waktu);
+			Intensity.push(data.intensity);
+			
 		});
-		var ctx = document.getElementById("canvasWidths").getContext('2d');
+		var ctx = document.getElementById("canvasWind").getContext('2d');
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
-					labels: Waktu,
 					datasets: [{
-						label: 'Widhts',
-						data: Widths,
+						label: 'Wind',
+						data: Wind,
+						//backgroundColor: 'transparent',
+						borderColor: 'rgba(200,100,70,0.75)',
+						pointStyle: 'circle',	
+						pointRadius: 3,					
+						borderWidth: 3
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero:true
+							}
+						}]
+					}
+				}
+			});
+		var ctx = document.getElementById("canvasHumidities").getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					datasets: [{
+						label: 'Humidities',
+						data: Humidities,
 						//backgroundColor: 'transparent',
 						borderColor: 'rgba(40,167,69,0.75)',
 						pointStyle: 'circle',	
@@ -123,7 +150,6 @@
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
-					labels: Waktu,
 					datasets: [{
 						label: 'Rainfalls',
 						data: Rainfalls,
@@ -144,14 +170,13 @@
 					}
 				}
 			});
-			var ctx = document.getElementById("canvasHumidities").getContext('2d');
+			var ctx = document.getElementById("canvasTemperatures").getContext('2d');
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
-					labels: Waktu,
 					datasets: [{
-						label: 'Humidities',
-						data: Humidities,
+						label: 'Temperatures',
+						data: Temperatures,
 						//backgroundColor: 'transparent',
 						borderColor: '#1565C0',
 						pointStyle: 'circle',
@@ -169,14 +194,13 @@
 					}
 				}
 			});
-			var ctx = document.getElementById("canvasTemperatures").getContext('2d');
+			var ctx = document.getElementById("canvasIntensity").getContext('2d');
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
-					labels: Waktu,
 					datasets: [{
-						label: 'Temperatures',
-						data: Temperatures,
+						label: 'Intensity',
+						data: Intensity,
 						//backgroundColor: 'transparent',
 						borderColor: '#EEFF41',
 						pointStyle: 'circle',

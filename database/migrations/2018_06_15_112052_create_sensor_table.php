@@ -15,12 +15,11 @@ class CreateSensorTable extends Migration
     {
         Schema::create('sensor', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('widhts')->nullable();
+            $table->string('wind')->nullable();
             $table->string('rainfalls')->nullable();
             $table->string('humidities')->nullable();
             $table->string('temperatures')->nullable();
             $table->string('intensity')->nullable();
-            $table->string('rain')->nullable();
             $table->timestamps();
         });
     }

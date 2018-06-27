@@ -120,5 +120,19 @@ class SensorController extends Controller
     {
         return view ('gallery');
     }
+
+    public function parsing(Request $request)  
+    {  
+        // $return = $_POST  
+        $sensor=new Sensor;  
+        $sensor->wind= $request->wind;  
+        $sensor->humidities=$request->humidities;  
+        $sensor->rainfalls=$request->rainfalls;  
+        $sensor->temperatures=$request->temperatures; 
+        $sensor->intensity=$request->intensity;
+        $sensor->save();  
+
+        return ['status'=>'sukses'];  
+    }
     
 }
