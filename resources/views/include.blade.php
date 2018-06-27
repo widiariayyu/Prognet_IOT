@@ -12,9 +12,7 @@
 		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<!-- Loading third party fonts -->
 		<link rel="stylesheet" type="text/css" href="{{asset('theme/weather-icons/css/weather-icons.min.css')}}">
-		<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
-		<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-
+		
 		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
 		<link href="{{ asset('theme/fonts/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
@@ -22,6 +20,7 @@
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 		<script src="{{ asset('js/app.js') }}"></script>
+		<link rel="stylesheet" href="{{ asset('lib/magnific-popup/magnific-popup.css') }}">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		{{--  <script src="{{ asset('theme/js/plugins.js') }}"></script>	  --}}
@@ -39,8 +38,10 @@
         @yield('index')
 
 		@yield('charts')
+		@yield('gallery')
         
-
+		<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+		<script src="{{ asset('lib/magnific-popup/magnific-popup.min.js') }}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
@@ -48,7 +49,8 @@
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-messaging.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-storage.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
         
         <script>
 				var config = {
@@ -72,7 +74,30 @@
 				});
 				
 		</script>
+
+		<script>
+			jQuery(document).ready(function( $ ) {
+
+				// custom code
+				$('.gallery-popup').magnificPopup({
+					type: 'image',
+					removalDelay: 300,
+					mainClass: 'mfp-fade',
+					gallery: {
+						enabled: true
+					},
+					zoom: {
+						enabled: true,
+						duration: 300,
+						easing: 'ease-in-out',
+						opener: function(openerElement) {
+						return openerElement.is('img') ? openerElement : openerElement.find('img');
+						}
+					}
+				});
+
+			});
+		</script>
 	</body>
 
 </html>
-
