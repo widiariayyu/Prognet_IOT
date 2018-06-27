@@ -130,6 +130,11 @@ class SensorController extends Controller
         $sensor->rainfalls=$request->rainfalls;  
         $sensor->temperatures=$request->temperatures; 
         $sensor->intensity=$request->intensity;
+        if($request->rain_status == 1.00){
+            $sensor->rain_status = True;
+        }elseif($request->rain_status == 0.00){
+            $sensor->rain_status = FALSE;
+        }
         $sensor->save();  
 
         return ['status'=>'sukses'];  
