@@ -44,81 +44,73 @@
 		</div>
         
 	<div class="wrap">
-    
     <!-- Define all of the tiles: -->
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/7.jpg" />
-        <div class="titleBox">Butterfly</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/1.jpg" />
-        <div class="titleBox">An old greenhouse</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/2.jpg" />
-        <div class="titleBox">Purple wildflowers</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/3.jpg" />
-        <div class="titleBox">A birdfeeder</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/10.jpg" />
-        <div class="titleBox">Crocus close-up</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/4.jpg" />
-        <div class="titleBox">The garden shop</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/5.jpg" />
-        <div class="titleBox">Spring daffodils</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/6.jpg" />
-        <div class="titleBox">Iris along the path</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/8.jpg" />
-        <div class="titleBox">The garden blueprint</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/9.jpg" />
-        <div class="titleBox">The patio</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/11.jpg" />
-        <div class="titleBox">Bumble bee collecting nectar</div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="boxInner">
-        <img src="http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/12.jpg" />
-        <div class="titleBox">Winding garden path</div>
-      </div>
-    </div>
-    
+    <section id="gallery">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/7.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/7.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div> 
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/images.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/images.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/images.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/images.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/1.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/1.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/1.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/1.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/2.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/2.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/7.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/7.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item wow fadeInUp">
+                        <a href="{{ asset('img/1.jpg')}}" class="gallery-popup">
+                            <img src="{{ asset('img/1.jpg')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+  
   </div>
 
 	<footer class="site-footer">
@@ -137,7 +129,5 @@
 		</div>
 	</footer>
 </div>
-</div>
-
 
 @endsection
