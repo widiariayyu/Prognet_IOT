@@ -35,9 +35,9 @@
 	<body>
 
         @yield('index')
-
 		@yield('charts')
 		@yield('gallery')
+		@yield('location')
         
 		<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
 		<script src="{{ asset('js/app.js') }}"></script>

@@ -1306,7 +1306,7 @@ form textarea {
         font-size: 1.1428571429em; }
 
 .fullwidth-block {
-  padding: 70px 0; }
+  padding: 0 0 50px 0; }
   .fullwidth-block .section-title {
     font-size: 36px;
     font-size: 2.5714285714em;

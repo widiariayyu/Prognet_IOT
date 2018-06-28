@@ -114,14 +114,17 @@ class SensorController extends Controller
         //
     }
 
-    public function gallery()
+    public function tes()
     {
-        return view ('gallery');
+        date_default_timezone_set("Asia/Makassar");
+        $time = date("h:i:sa");
     }
 
     public function parsing(Request $request)  
     {  
         // $return = $_POST  
+        // $date = new DateTime();
+        // $date->setTimeZone(new DateTimeZone('Asia/Hong_Kong'));
         $sensor=new Sensor;  
         $sensor->wind= $request->wind;  
         $sensor->humidities=$request->humidities;  
@@ -133,6 +136,10 @@ class SensorController extends Controller
         }elseif($request->rain_status == 0.00){
             $sensor->rain_status = FALSE;
         }
+        date_default_timezone_set("Asia/Makassar");
+        $time = date("h:i:sa");
+        // $sensor->created_at=$time;
+        // $sensor->updated_at=$time;
         $sensor->save();  
 
         return ['status'=>'sukses'];  
