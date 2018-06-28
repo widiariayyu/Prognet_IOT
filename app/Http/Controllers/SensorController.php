@@ -22,18 +22,25 @@ class SensorController extends Controller
        
         $result = DB::select(
             DB::raw('SELECT
-                        a.*,
-                        HOUR(`created_at`) AS jam, 
-                        MINUTE(`created_at`) AS menit,
-                        DAY(`created_at`) AS tanggal, 
-                        CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu  
-                    FROM 
-                        sensor a  
-                    INNER JOIN 
-                        (SELECT MAX(id) id FROM sensor GROUP BY HOUR(`created_at`), DAY(`created_at`) ORDER BY id DESC LIMIT 21) b
-                        ON a.id=b.id
-                    ORDER BY 
-                        id ASC')
+                sensor.*
+                FROM(
+                    SELECT sensor.*, TIME(created_at) as waktu FROM sensor ORDER BY id DESC LIMIT 5
+                )sensor
+                ORDER BY id ASC
+            ')
+            // DB::raw('SELECT
+            //             a.*,
+            //             HOUR(`created_at`) AS jam, 
+            //             MINUTE(`created_at`) AS menit,
+            //             DAY(`created_at`) AS tanggal, 
+            //             CONCAT(HOUR(`created_at`),":",MINUTE(`created_at`)) AS waktu  
+            //         FROM 
+            //             sensor a  
+            //         INNER JOIN 
+            //             (SELECT MAX(id) id FROM sensor GROUP BY HOUR(`created_at`), DAY(`created_at`) ORDER BY id DESC LIMIT 21) b
+            //             ON a.id=b.id
+            //         ORDER BY 
+            //             id ASC')
         );
 
         return $result;
@@ -114,12 +121,6 @@ class SensorController extends Controller
         //
     }
 
-    public function tes()
-    {
-        date_default_timezone_set("Asia/Makassar");
-        $time = date("h:i:sa");
-    }
-
     public function parsing(Request $request)  
     {  
         // $return = $_POST  
@@ -144,5 +145,14 @@ class SensorController extends Controller
 
         return ['status'=>'sukses'];  
     }
+    public function loginAdmin()
+    {
+        $weather = Sensor::orderBy('id','desc')
+                                ->take(1)
+                                ->get()
+                                ->sortByDesc('created_at');
+        return view ('loginAdmin',compact('weather'));
+    }
+
     
 }

@@ -24,3 +24,7 @@ Route::post('/parsing','SensorController@parsing')->name('parsing');
 
 // coba jalanin
 // di view ada ke edit ?
+
+Auth::routes();
+
+Route::get('/home', 'SensorController@loginAdmin')->name('home');

@@ -20,9 +20,28 @@
 					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
 						<li class="menu-item current-menu-item"><a href="{{url('/')}}">Home</a></li>
-						<li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
-						<li class="menu-item"><a href="/login">LoginAdmin</a></li>
-					</ul>			
+                        <li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
+                        <li class="menu-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                <button type="submit">Logout</button>
+                                @csrf
+                            </form>
+                        </li>
+						<li class="menu-item">
+						<select class="custom-select" id="save_data" style="background-color:#28292f; color: white; border-color: #5dade2;">
+							<option>--Time Refresh--</option>
+							<option value="60">every 1 minutes</option> 
+							<option value="300">every 5 minutes</option> 
+							<option value="600">every 10 minutes</option> 
+							<option value="900">every 15 minutes</option> 
+							<option value="1800">every 30 minutes</option> 
+							<option value="3600">every 1 hours</option>
+						</select>
+						</li>
+					</ul>
+					<ul type="submit" id="save_btn" class="menu">
+						<button class="btn btn-primary">Submit</button>
+					</ul>					
 				</div>
 				<div class="mobile-navigation"></div>
 			</div>
@@ -37,7 +56,7 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="degree">
-									<div class="num "><span id="hujan"></span> {{ $wth->wind }} m/s</div>
+									<div class="num "><span id="hujan"></span> {{ $wth->wind }} H/s</div>
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{ asset('theme/images/wind.png')}}" alt="">
 									</div>	
@@ -75,16 +94,16 @@
 							<div class="forecast-header">
 								<div class="day">Temperature and Humidities</div>
 							</div> <!-- .forecast-header -->
-							<div class="forecast-content" style="margin-top:15px;">
+							<div class="forecast-content">
 								<div class="degree" style="display: inline;">
 									<div class="forecast-icon">
-										<img class="icon-sensor" src="{{ asset('theme/images/thermometer-blue.png')}}" alt="">
+										<img class="icon-sensor tem" src="{{ asset('theme/images/thermometer-blue.png')}}" alt="">
 									</div>
-									<div class="num" ><h5>{{ $wth->temperatures }}<sup>o</sup>C</h5></div>
+									<div class="num ">{{ $wth->temperatures }} <sup>o</sup>C</div>
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{ asset('theme/images/humid.png')}}" alt="">
 									</div>
-									<div class="num" ><h5>{{ $wth->humidities }} %</h5></div>
+									<div class="num ">{{ $wth->humidities }} %</div>
 								</div>	
 							</div>
 						</div>
