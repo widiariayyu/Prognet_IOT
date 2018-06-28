@@ -86,6 +86,7 @@
 	var Rainfalls = new Array();
 	var Temperatures = new Array();
 	var Intensity = new Array();
+	var Waktu =new Array();
 
 
 	$(document).ready(function(){
@@ -96,12 +97,14 @@
 			Rainfalls.push(data.rainfalls);
 			Temperatures.push(data.temperatures);
 			Intensity.push(data.intensity);
+			Waktu.push(data.waktu);
 			
 		});
 		var ctx = document.getElementById("canvasWind").getContext('2d');
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
+					labels: Waktu,
 					datasets: [{
 						label: 'Wind',
 						data: Wind,
@@ -126,6 +129,7 @@
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
+					labels: Waktu,
 					datasets: [{
 						label: 'Humidities',
 						data: Humidities,
@@ -150,6 +154,7 @@
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
+					labels: Waktu,
 					datasets: [{
 						label: 'Rainfalls',
 						data: Rainfalls,
@@ -174,6 +179,7 @@
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
+					labels: Waktu,
 					datasets: [{
 						label: 'Temperatures',
 						data: Temperatures,
@@ -198,6 +204,7 @@
 			var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
+					labels: Waktu,
 					datasets: [{
 						label: 'Intensity',
 						data: Intensity,
