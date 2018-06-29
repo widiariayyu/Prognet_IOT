@@ -19,11 +19,11 @@
 				<div class="main-navigation">
 					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
-						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('home')}}">Home</a></li>
-                        <li class="menu-item" style="padding-top:5px"><a href="{{url('charts')}}">Charts</a></li>
+						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('home')}}" class="fa fa-home"></a></li>
+                        <li class="menu-item" style="padding-top:5px"><a href="{{url('charts')}}" class="fa fa-bar-chart-o"></a></li>
                         <li class="menu-item">
                             <form method="POST" action="{{ route('logout') }}">
-                                <button type="submit">Logout</button>
+                                <button type="submit" >logout</button>
                                 @csrf
                             </form>
                         </li>

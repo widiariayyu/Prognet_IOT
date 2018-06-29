@@ -15,8 +15,8 @@
 				<div class="main-navigation">
 					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
-						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('/')}}">Home</a></li>
-						<li class="menu-item" style="padding-top:5px"><a href="{{url('charts')}}">Charts</a></li>
+						<li class="menu-item" style="padding-top:5px"><a href="{{url('/')}}">Home</a></li>
+						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('charts')}}">Charts</a></li>
 					</ul>				
 				</div>
 				<div class="mobile-navigation"></div>
