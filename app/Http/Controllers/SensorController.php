@@ -24,7 +24,7 @@ class SensorController extends Controller
             DB::raw('SELECT
                 sensor.*
                 FROM(
-                    SELECT sensor.*, TIME(created_at) as waktu FROM sensor ORDER BY id DESC LIMIT 5
+                    SELECT sensor.*, TIME(created_at) as waktu FROM sensor ORDER BY id DESC LIMIT 15
                 )sensor
                 ORDER BY id ASC
             ')

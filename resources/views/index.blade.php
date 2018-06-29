@@ -26,11 +26,14 @@
 				</div>
 				<div class="mobile-navigation"></div>
 			</div>
-		</div>
+		</div>	
 		<div class="fullwidth-block">
 			<div class="forecast-table forest-margin">
+				
 				<div class="container">
+					
 					<div class="forecast-container">
+						
 						<div class="today forecast">
 							<div class="forecast-header">
 								<div class="day">Wind</div>
@@ -117,9 +120,12 @@
 							</div>
 						</div>
 					</div>
+								
 				</div>
+		
 			</div>	
 		</div>
+
 		<main class="main-content">
 			<div class="fullwidth-block">
 				<div class="container">
@@ -156,6 +162,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="fullwidth-block">
             <div class="container">
 				<h2 class="section-title">Location</h2>
