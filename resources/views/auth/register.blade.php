@@ -2,10 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="row justify-content-around" style="background-color:#fff;">
+        <div style="background-color:#fff;">
+            <img src="{{ asset('img/rain.jpg')}}" alt="" style="width:540px; opacity:0.7;filter:alpha(opacity=80);">
+        </div>
+        <div class="col align-self-center">
+            <div style="text-align:center; padding:30px 0 30px 0;">
+                <h1 class="site-title" >Weather Station</h1>
+			    <small class="site-description">Internet of Things project</small>
+            </div>
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="" style="text-align:center; padding:30px 0 30px 0;"><h3>{{ __('Register') }} Admin</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">

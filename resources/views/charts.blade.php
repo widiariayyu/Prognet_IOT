@@ -15,23 +15,9 @@
 				<div class="main-navigation">
 					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
-						<li class="menu-item current-menu-item"><a href="{{url('/')}}">Home</a></li>
-						<li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
-						<li class="menu-item">
-						<select class="custom-select" id="save_data" style="background-color:#28292f; color: white; border-color: #5dade2;">
-							<option>--Time Refresh--</option>
-							<option value="60">every 1 minutes</option> 
-							<option value="300">every 5 minutes</option> 
-							<option value="600">every 10 minutes</option> 
-							<option value="900">every 15 minutes</option> 
-							<option value="1800">every 30 minutes</option> 
-							<option value="3600">every 1 hours</option>
-						</select>
-						</li>
-					</ul>
-					<ul type="submit" id="save_btn" class="menu">
-						<button class="btn btn-primary">Submit</button>
-					</ul>					
+						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('/')}}">Home</a></li>
+						<li class="menu-item" style="padding-top:5px"><a href="{{url('charts')}}">Charts</a></li>
+					</ul>				
 				</div>
 				<div class="mobile-navigation"></div>
 			</div>
@@ -58,17 +44,15 @@
 		</div>
 		<footer class="site-footer">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-md-offset-1">
-						<div class="social-links">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-google-plus"></i></a>
-							<a href="#"><i class="fa fa-pinterest"></i></a>
-						</div>
+				<div class="row justify-content-around">
+					<div class="social-links">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-google-plus"></i></a>
+						<a href="#"><i class="fa fa-pinterest"></i></a>
 					</div>
 				</div>
-				<p class="colophon">Copyright 2018 Weather Stations. All rights reserved</p>
+				<p class="row justify-content-around" style="padding-top:15px;">Copyright 2018 Weather Stations. All rights reserved</p>
 			</div>
 		</footer>
 	</div>

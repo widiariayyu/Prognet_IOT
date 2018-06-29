@@ -174,17 +174,15 @@
         </div>
 		<footer class="site-footer">
 			<div class="container">
-				<div class="row">		
-					<div class="col-md-3 col-md-offset-1">
-						<div class="social-links" >
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-google-plus"></i></a>
-							<a href="#"><i class="fa fa-pinterest"></i></a>
-						</div>
+				<div class="row justify-content-around">
+					<div class="social-links">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-google-plus"></i></a>
+						<a href="#"><i class="fa fa-pinterest"></i></a>
 					</div>
 				</div>
-				<p class="colophon">TI Udayana. Designed by TC2016. All rights reserved</p>
+				<p class="row justify-content-around" style="padding-top:15px;">Copyright 2018 Weather Stations. All rights reserved</p>
 			</div>
 		</footer>
 	@endforeach

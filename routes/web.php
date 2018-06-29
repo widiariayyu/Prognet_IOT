@@ -28,3 +28,4 @@ Route::post('/parsing','SensorController@parsing')->name('parsing');
 Auth::routes();
 
 Route::get('/home', 'SensorController@loginAdmin')->name('home');
+
