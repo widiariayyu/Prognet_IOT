@@ -257,11 +257,21 @@ form textarea {
  * Reusable Components Style
  */
 .button, form input[type="submit"], form button, form input[type="reset"] {
-  border: none;
-  background: #009ad8;
-  padding: 10px 20px;
+  background: transparent;
   border-radius: 30px;
-  color: white; }
+  padding: 5px 25px;
+  border: 2px solid transparent;
+  color: white;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  font-weight: 400;
+  color: #ffffff; }
+
+  button:hover{
+    border-color: #009ad8;
+    color: #009ad8;
+    text-decoration: underline
+  }
 
 .map {
   height: 220px; }

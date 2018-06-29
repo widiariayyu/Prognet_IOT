@@ -145,6 +145,7 @@ class SensorController extends Controller
 
         return ['status'=>'sukses'];  
     }
+    
     public function loginAdmin()
     {
         $weather = Sensor::orderBy('id','desc')
