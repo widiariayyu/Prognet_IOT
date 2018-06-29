@@ -150,7 +150,7 @@
 							</div>
 						</div>
 					</div>
-								
+					<h2 class="section-title" id="value-sensor">Waktu Refresh Selama <service></service> Menit</h2>		
 				</div>
 		
 			</div>	

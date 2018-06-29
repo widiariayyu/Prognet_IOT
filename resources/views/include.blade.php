@@ -67,6 +67,9 @@
 				var db = firebase.database();
 				var rootRef = db.ref('service');
 				
+				var ab = document.querySelector('service');
+				var hasil;
+
 				$('#save_btn').click(function(){
 					
 					rootRef.set({
@@ -74,6 +77,15 @@
 					});
 					//console.log({save_data: $('#save_data').val()});
 				});
+
+				rootRef.on('value',function(snapshot){
+					hasil = snapshot.val();
+					//var waktu = data.waktu();
+					//ab = waktu / 60;
+					//hasil =( data / 60);
+					ab.innerHTML =  hasil.waktu / 60;
+					console.log(snapshot.val());
+				})
 				
 		</script>
 
