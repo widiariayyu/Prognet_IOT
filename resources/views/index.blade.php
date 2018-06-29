@@ -15,16 +15,46 @@
 					</div>
 				</a>
 				{{--  navbar  --}}
-
+				@if (Route::has('login'))
 				<div class="main-navigation">
+				<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+					@auth	
+					<ul class="menu">
+						<li class="menu-item" style="padding:5px 30px 0 0">Hello, {{Auth::user()->name}}</li>
+						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('/')}}">Home</a></li>
+						<li class="menu-item" style="padding-top:5px"><a href="{{url('charts')}}">Charts</a></li>
+						<li class="menu-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                <button type="submit" ><img src="{{ asset('theme/images/logout.png')}}" alt=""></button>
+                                @csrf
+                            </form>
+                        </li>
+						<li class="menu-item">
+						<select class="custom-select" id="save_data" style="background-color:#28292f; color: white; border-color: #5dade2;">
+							<option>--Time Refresh--</option>
+							<option value="60">every 1 minutes</option> 
+							<option value="300">every 5 minutes</option> 
+							<option value="600">every 10 minutes</option> 
+							<option value="900">every 15 minutes</option> 
+							<option value="1800">every 30 minutes</option> 
+							<option value="3600">every 1 hours</option>
+						</select>
+						</li>
+					</ul>
+					<ul type="submit" id="save_btn" class="menu">
+						<button class="btn btn-primary">Submit</button>
+					</ul>										
+				@else
 					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
 						<li class="menu-item current-menu-item"><a href="{{url('/')}}">Home</a></li>
 						<li class="menu-item"><a href="{{url('charts')}}">Charts</a></li>
 						<li class="menu-item"><a href="/login">LoginAdmin</a></li>
-					</ul>			
+					</ul>	
+				@endauth		
 				</div>
 				<div class="mobile-navigation"></div>
+				@endif
 			</div>
 		</div>	
 		<div class="fullwidth-block">
