@@ -1,6 +1,4 @@
 @extends('include')
-
-
 @section('index')
 	<div class="site-content">
 		@foreach($weather as $wth)

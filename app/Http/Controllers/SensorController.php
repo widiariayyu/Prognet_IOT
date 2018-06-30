@@ -13,8 +13,9 @@ class SensorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view ('charts');
+    {   
+        $data = Sensor::all();
+        return view ('charts',compact('data'));
     }
     public function table()
     {
@@ -57,6 +58,11 @@ class SensorController extends Controller
                                 ->get()
                                 ->sortByDesc('created_at');
         return view ('index',compact('weather'));
+    }
+
+    public function tochart()
+    {
+        
     }
     /**
      * Show the form for creating a new resource.   

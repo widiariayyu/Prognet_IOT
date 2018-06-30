@@ -23,59 +23,63 @@
 			</div>
 		</div>
 		<div class="container">
-		<form action="">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">@</span>
+			<div class="forecast-container" style=" margin:30px 0 30px 0; padding:20px;">
+				<form action="">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+								</div>
+								<input type="datetime-local" class="form-control" placeholder="tanggal awal" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
 						</div>
-						<input type="text" class="form-control" placeholder="tanggal awal" aria-label="Username" aria-describedby="basic-addon1">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">@</span>
+						<div class="col-md-4">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+								</div>
+								<input type="datetime-local" class="form-control" placeholder="tanggal akhir" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
 						</div>
-						<input type="text" class="form-control" placeholder="tanggal akhir" aria-label="Username" aria-describedby="basic-addon1">
+						<div class="col-md-4">
+							<button class="btn btn-primary" type="submit">Submit</button>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<button class="btn btn-primary" type="submit">Submit</button>
-				</div>
-			</div>
-		</form>			
-		<div class="table-responsive">
-				<table id="example" class="table table-striped " width="100%">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Wind</th>
-							<th>Rainfalls</th>
-							<th>Humidities</th>
-							<th>Temperatures</th>
-							<th>Intensity</th>
-							<th>Rain Status</th>
-							<th>Waktu</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>50</td>
-							<td>1030</td>
-							<td>27.40</td>
-							<td>82.80</td>
-							<td>1.0</td>
-							<td>1</td>
-							<td>2018-06-29 02:48:03</td>
-						</tr>
-					</tbody>	
-				</table>
-			</div>		
+				</form>		
+				<div class="table-responsive">
+					<table id="example" class="table table-striped " width="100%">
+				
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Wind</th>
+								<th>Rainfalls</th>
+								<th>Humidities</th>
+								<th>Temperatures</th>
+								<th>Intensity</th>
+								<th>Rain Status</th>
+								<th>Waktu</th>
+							</tr>
+						</thead>
+						@foreach($data as $wth)
+						<tbody>
+							<tr>
+								<td>{{ $loop->iteration }}</td>
+								<td>{{ $wth->wind }}</td>
+								<td>{{ $wth->rainfalls }}</td>
+								<td>{{ $wth->humidities }}</td>
+								<td>{{ $wth->temperatures }}</td>
+								<td>{{ $wth->intensity }}</td>
+								<td>{{ $wth->rain_status }}</td>
+								<td>{{ $wth->created_at }}</td>
+							</tr>	
+						</tbody>
+						@endforeach
+					</table>
+				</div>		
+			</div>	
 		</div>
-	</div>
         <div class="forecast-table forest-margin chart-margin">
 			<div class="container">
 
