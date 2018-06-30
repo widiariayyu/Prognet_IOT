@@ -23,14 +23,15 @@
 			</div>
 		</div>
 		<div class="container">
-		<form action="">
+		<form method="POST" action="{{url('/send')}}">
+				{{csrf_field()}}	
 			<div class="row">
 				<div class="col-md-4">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">@</span>
 						</div>
-						<input type="text" class="form-control" placeholder="tanggal awal" aria-label="Username" aria-describedby="basic-addon1">
+						<input type="date" name="sawal" class="form-control" placeholder="tanggal awal" aria-label="Username" aria-describedby="basic-addon1">
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -38,7 +39,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">@</span>
 						</div>
-						<input type="text" class="form-control" placeholder="tanggal akhir" aria-label="Username" aria-describedby="basic-addon1">
+						<input type="date" name="sakhir" class="form-control" placeholder="tanggal akhir" aria-label="Username" aria-describedby="basic-addon1">
 					</div>
 				</div>
 				<div class="col-md-4">

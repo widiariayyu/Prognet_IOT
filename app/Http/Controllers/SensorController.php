@@ -158,5 +158,57 @@ class SensorController extends Controller
         return view ('loginAdmin',compact('weather'));
     }
 
+    public function searchDate(Request $request)
+    {
+        $Sawal = strtotime($request->sawal);
+        $Dawal = date('d',$Sawal);
+        $Hawal = date('h',$Sawal);
+
+        $Sakhir = strtotime($request->sakhir);
+        $Dakhir = date('d',$Sakhir);
+        $Hakhir = date('h',$Sakhir);
+
+
+        // echo $Dawal;
+        // echo $Dakhir;        
+        // $send = DB::select(
+        // DB::raw('Select * FROM sensor WHERE DAY('created_at')=$Hawal'));
+        // $send = Sensor::whereDay('created_at','>=', $Dawal)->where(Hour(created_at),'>=', $Hawal)
+        // ->whereDay('created_at','<=',$Dakhir)
+        // ->where(Hour(created_at),'<=',$Hakhir)
+        // ->get();
+
+       $send= DB::table('sensor')
+       ->where([
+           ['DAY(created_at)','>=',$Dawal],
+           ['DAY(created_at)','<=',$Dakhir]
+       ])
+    //    ->whereRaw('DAY(created_at)>=$Dawal')
+    //    ->whereRaw('DAY(created_at)','>=','$Dawal')
+    //    ->whereRaw('DAY(created_at) >= ?', [$Dawal])
+    //    ->whereRaw('DAY(created_at) >= ?', [$Dakhir])
+       ->get();        
+
+
+        // $send = DB::select('
+        // DB::raw('SELECT * 
+        // FROM sensor 
+        // WHERE DAY(created_at)>= :hawal', ["hawal" => '$hawal'])
+        // ');        
+        // return $send;
+
+        // var_dump($send);
+        // $send =DB::select(
+        // DB::raw('SELECT * FROM sensor WHERE DAY('created_at','>=',$Hawal) AND DAY(created_at)<=$Hakhir')
+        // );
+        return $send;
+            // echo $send;
+            // echo $Hakhir;
+
+            // $send = Sensor::where('DAY(created_at)','>=', $Hawal)
+            // ->where('DAY(created_at)','<=',$Hawal)
+            // ->get();   
+    }
+
     
 }

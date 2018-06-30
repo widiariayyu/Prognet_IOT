@@ -21,6 +21,7 @@ Route::get('/charts', 'SensorController@index')->name('charts');
 Route::get('/charts/chart', 'SensorController@chart')->name('charts');
 Route::get('/table', 'SensorController@table')->name('table');
 Route::post('/parsing','SensorController@parsing')->name('parsing');
+Route::post('/send','SensorController@searchDate')->name('send');
 // Route::get('/weather', 'SensorController@weather')->name('weather');
 
 // coba jalanin
