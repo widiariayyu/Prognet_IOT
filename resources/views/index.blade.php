@@ -24,12 +24,6 @@
 						<li class="menu-item current-menu-item" style="padding-top:5px"><a href="{{url('/')}}">Home</a></li>
 						<li class="menu-item" style="padding-top:5px"><a href="{{url('charts')}}">Charts</a></li>
 						<li class="menu-item">
-                            <form method="POST" action="{{ route('logout') }}">
-                                <button type="submit" ><img src="{{ asset('theme/images/logout.png')}}" alt=""></button>
-                                @csrf
-                            </form>
-                        </li>
-						<li class="menu-item">
 						<select class="custom-select" id="save_data" style="background-color:#28292f; color: white; border-color: #5dade2;">
 							<option>--Time Refresh--</option>
 							<option value="60">every 1 minutes</option> 
@@ -43,7 +37,15 @@
 					</ul>
 					<ul type="submit" id="save_btn" class="menu">
 						<button class="btn btn-primary">Submit</button>
-					</ul>										
+					</ul>			
+					<ul class="menu">
+					<li class="menu-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                <button type="submit" ><img src="{{ asset('theme/images/logout.png')}}" alt=""></button>
+                                @csrf
+                            </form>
+                        </li>
+					</ul>							
 				@else
 					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
@@ -55,15 +57,16 @@
 				</div>
 				<div class="mobile-navigation"></div>
 				@endif
-			</div>
-		</div>	
+			</div>	
+		</div>
+
 		<div class="fullwidth-block">
+		<div class="container" style="margin-bottom:110px; padding-top:10px; width:fit-content; border: solid 2px #009ad8; ">
+				<h2 id="value-sensor">Data Refresh For <service></service> Minutes</h2>
+			</div>
 			<div class="forecast-table forest-margin">
-				
 				<div class="container">
-					
 					<div class="forecast-container">
-						
 						<div class="today forecast">
 							<div class="forecast-header">
 								<div class="day">Wind</div>
@@ -92,9 +95,9 @@
 									</div>	
 								</div>
 								@if ( $wth->rainfalls  < 500)
-								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">Status: hujan </span>
+								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">Status: Rain </span>
 								@else 
-								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">Status: tidak hujan </span>
+								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">Status: Not Rain </span>
 								@endif
 							</div>
 						</div>
@@ -149,8 +152,7 @@
 								@endif
 							</div>
 						</div>
-					</div>
-					<h2 class="section-title" id="value-sensor">Waktu Refresh Selama <service></service> Menit</h2>		
+					</div>		
 				</div>
 		
 			</div>	
