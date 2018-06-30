@@ -8,19 +8,20 @@
 		<title>Internet Of Things Weather</title>
 		<link rel="shortcut icon" href="{{asset('theme/images/logo-ti.png')}}">
 		<link rel="stylesheet" href="{{asset('css/app.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/datatables/dataTables.bootstrap4.css') }}">
 		<link rel="stylesheet" href="{{asset('css/main.css')}}">
-		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
 		<!-- Loading third party fonts -->
 		<link rel="stylesheet" type="text/css" href="{{asset('theme/weather-icons/css/weather-icons.min.css')}}">
 		
 		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
 		<link href="{{ asset('theme/fonts/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
-
+		
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('lib/magnific-popup/magnific-popup.css') }}">
-
+		
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		{{--  <script src="{{ asset('theme/js/plugins.js') }}"></script>	  --}}
         {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>		  --}}
@@ -38,13 +39,19 @@
 		@yield('charts')
 		@yield('gallery')
 		@yield('location')
-        
-		<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+		@yield('table')
 		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+
 		<script src="{{ asset('js/plugins.js') }}"></script>
 		<script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
 		<script src="{{ asset('lib/magnific-popup/magnific-popup.min.js') }}"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<script src="{{asset('vendor/datatables/jquery.dataTables.js') }}"></script>
+		<script src="{{asset('vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+		{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+		
+
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>

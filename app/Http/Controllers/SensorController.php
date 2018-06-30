@@ -16,7 +16,10 @@ class SensorController extends Controller
     {
         return view ('charts');
     }
-
+    public function table()
+    {
+        return view ('table');
+    }
     public function chart()
     {
        

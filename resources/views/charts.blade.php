@@ -22,8 +22,63 @@
 				<div class="mobile-navigation"></div>
 			</div>
 		</div>
+		<div class="container">
+		<form action="">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">@</span>
+						</div>
+						<input type="text" class="form-control" placeholder="tanggal awal" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">@</span>
+						</div>
+						<input type="text" class="form-control" placeholder="tanggal akhir" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-primary" type="submit">Submit</button>
+				</div>
+			</div>
+		</form>			
+		<div class="table-responsive">
+				<table id="example" class="table table-striped " width="100%">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Wind</th>
+							<th>Rainfalls</th>
+							<th>Humidities</th>
+							<th>Temperatures</th>
+							<th>Intensity</th>
+							<th>Rain Status</th>
+							<th>Waktu</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>50</td>
+							<td>1030</td>
+							<td>27.40</td>
+							<td>82.80</td>
+							<td>1.0</td>
+							<td>1</td>
+							<td>2018-06-29 02:48:03</td>
+						</tr>
+					</tbody>	
+				</table>
+			</div>		
+		</div>
+	</div>
         <div class="forecast-table forest-margin chart-margin">
 			<div class="container">
+
 				<div class="forecast-container">
 					<canvas id="canvasWind" width="800" height="400"></canvas>
 				</div>
@@ -67,6 +122,8 @@
 
 
 		$(document).ready(function(){
+			$('#example').DataTable();
+
 			$.get(url, function(response){
 			response.forEach(function(data){
 				Wind.push(data.wind);
