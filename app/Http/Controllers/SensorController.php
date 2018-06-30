@@ -13,8 +13,9 @@ class SensorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view ('charts');
+    {   
+        $data = Sensor::all();
+        return view ('charts',compact('data'));
     }
     public function table()
     {
@@ -57,6 +58,11 @@ class SensorController extends Controller
                                 ->get()
                                 ->sortByDesc('created_at');
         return view ('index',compact('weather'));
+    }
+
+    public function tochart()
+    {
+        
     }
     /**
      * Show the form for creating a new resource.   
@@ -178,18 +184,20 @@ class SensorController extends Controller
         // ->where(Hour(created_at),'<=',$Hakhir)
         // ->get();
 
-       $send= DB::table('sensor')
-       ->where([
-           ['DAY(created_at)','>=',$Dawal],
-           ['DAY(created_at)','<=',$Dakhir]
-       ])
+    //    $send= DB::table('sensor')
+    //    ->where([
+    //        ['DAY(created_at)','>=',$Dawal],
+    //        ['DAY(created_at)','<=',$Dakhir]
+    //    ])
     //    ->whereRaw('DAY(created_at)>=$Dawal')
     //    ->whereRaw('DAY(created_at)','>=','$Dawal')
     //    ->whereRaw('DAY(created_at) >= ?', [$Dawal])
     //    ->whereRaw('DAY(created_at) >= ?', [$Dakhir])
-       ->get();        
+    //    ->get();        
 
-
+            $send = Sensor::whereDay('created_at','>=', $Dawal)
+            ->whereDay('created_at','<=',$Dakhir)
+            ->get();
         // $send = DB::select('
         // DB::raw('SELECT * 
         // FROM sensor 
@@ -200,8 +208,9 @@ class SensorController extends Controller
         // var_dump($send);
         // $send =DB::select(
         // DB::raw('SELECT * FROM sensor WHERE DAY('created_at','>=',$Hawal) AND DAY(created_at)<=$Hakhir')
-        // );
+        // // );
         return $send;
+        // echo $send;
             // echo $send;
             // echo $Hakhir;
 
