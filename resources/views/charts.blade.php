@@ -63,8 +63,9 @@
 								<th>Waktu</th>
 							</tr>
 						</thead>
-						@foreach($data as $wth)
+						
 						<tbody>
+								@foreach($data as $wth)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $wth->wind }}</td>
@@ -75,8 +76,9 @@
 								<td>{{ $wth->rain_status }}</td>
 								<td>{{ $wth->created_at }}</td>
 							</tr>	
+							@endforeach
 						</tbody>
-						@endforeach
+						
 					</table>
 				</div>		
 			</div>	
@@ -127,7 +129,9 @@
 
 
 		$(document).ready(function(){
-			$('#example').DataTable();
+			$('#example').DataTable({
+				"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+			});
 
 			$.get(url, function(response){
 			response.forEach(function(data){

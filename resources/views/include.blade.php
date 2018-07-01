@@ -47,6 +47,7 @@
 
 		<script src="{{asset('vendor/datatables/jquery.dataTables.js') }}"></script>
 		<script src="{{asset('vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+		{{--  <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>  --}}
 		{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
 		
 

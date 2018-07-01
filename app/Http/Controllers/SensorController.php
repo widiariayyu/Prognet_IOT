@@ -128,9 +128,7 @@ class SensorController extends Controller
 
     public function parsing(Request $request)  
     {  
-        // $return = $_POST  
-        // $date = new DateTime();
-        // $date->setTimeZone(new DateTimeZone('Asia/Hong_Kong'));
+
         $sensor=new Sensor;  
         $sensor->wind= $request->wind;  
         $sensor->humidities=$request->humidities;  
@@ -173,67 +171,14 @@ class SensorController extends Controller
         $Makhir = date('Y-m-d H:i:s',$Sakhir);
         $Mawal = date('Y-m-d H:i:s',$Sawal);
 
-        
-        // echo $Dawal;
-        // echo $Dakhir;        
-        // $send = DB::select(
-        // DB::raw('Select * FROM sensor WHERE DAY('created_at')=$Hawal'));
-        // $send = Sensor::whereDay('created_at','>=', $Dawal)->where(Hour(created_at),'>=', $Hawal)
-        // ->whereDay('created_at','<=',$Dakhir)
-        // ->where(Hour(created_at),'<=',$Hakhir)
-        // ->get();
-
-    //    $send= DB::table('sensor')
-    //    ->where([
-    //        ['DAY(created_at)','>=',$Dawal],
-    //        ['DAY(created_at)','<=',$Dakhir]
-    //    ])
-    //    ->whereRaw('DAY(created_at)>=$Dawal')
-    //    ->whereRaw('DAY(created_at)','>=','$Dawal')
-    //    ->whereRaw('DAY(created_at) >= ?', [$Dawal])
-    //    ->whereRaw('DAY(created_at) >= ?', [$Dakhir])
-    //    ->get();        
-
-            // $data = Sensor::whereDay('created_at','>=', $Dawal)
-            // ->whereDay('created_at','<=',$Dakhir)
-            // ->get();
-
-            // $sensor=DB::table('sensor')
-            // ->whereRaw('DAY(created_at) >= ?', [$Dawal])
-            // ->whereRaw('DAY(created_at) >= ?', [$Hawal])
-            // ->whereRaw('DAY(created_at) <=?', [$Dakhir])
-            // ->whereRaw('DAY(created_at) <= ?', [$Hakhir])
-            // ->get();
 
             $data = DB::table('sensor')
-                    //   ->whereDate('created_at','>=',$Dawal)
-                    //   ->whereTime('created_at','>=',$Hawal)
-                    //   ->whereDate('created_at','<=',$Dakhir)
-                    //   ->whereTime('created_at','<=',$Hakhir)
+
                       ->whereBetween('created_at',[$Mawal, $Makhir])
                       ->get();            
-            // return $sensor;
 
-        // $send = DB::select('
-        // DB::raw('SELECT * 
-        // FROM sensor 
-        // WHERE DAY(created_at)>= :hawal', ["hawal" => '$hawal'])
-        // ');        
-        // return $send;
-
-        // var_dump($send);
-        // $send =DB::select(
-        // DB::raw('SELECT * FROM sensor WHERE DAY('created_at','>=',$Hawal) AND DAY(created_at)<=$Hakhir')
-        // // );
-        // return redirect();
         return view ('charts',compact('data'));
-        // echo $send;
-            // echo $send;
-            // echo $Hakhir;
-
-            // $send = Sensor::where('DAY(created_at)','>=', $Hawal)
-            // ->where('DAY(created_at)','<=',$Hawal)
-            // ->get();   
+ 
     }
 
     
