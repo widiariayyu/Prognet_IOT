@@ -32,7 +32,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
 								</div>
-								<input type="date" class="form-control" name="sawal" placeholder="tanggal awal" aria-label="Username" aria-describedby="basic-addon1">
+								<input type="date" class="form-control" name="sawal"  aria-label="Username" aria-describedby="basic-addon1">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -40,7 +40,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
 								</div>
-								<input type="date" class="form-control" name="sakhir" placeholder="tanggal akhir" aria-label="Username" aria-describedby="basic-addon1">
+								<input type="date" class="form-control" name="sakhir"  aria-label="Username" aria-describedby="basic-addon1">
 							</div>
 						</div>
 						<div class="col-md-4">

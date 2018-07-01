@@ -60,10 +60,6 @@ class SensorController extends Controller
         return view ('index',compact('weather'));
     }
 
-    public function tochart()
-    {
-        
-    }
     /**
      * Show the form for creating a new resource.   
      *
@@ -195,7 +191,7 @@ class SensorController extends Controller
     //    ->whereRaw('DAY(created_at) >= ?', [$Dakhir])
     //    ->get();        
 
-            $send = Sensor::whereDay('created_at','>=', $Dawal)
+            $data = Sensor::whereDay('created_at','>=', $Dawal)
             ->whereDay('created_at','<=',$Dakhir)
             ->get();
         // $send = DB::select('
@@ -209,7 +205,7 @@ class SensorController extends Controller
         // $send =DB::select(
         // DB::raw('SELECT * FROM sensor WHERE DAY('created_at','>=',$Hawal) AND DAY(created_at)<=$Hakhir')
         // // );
-        return $send;
+        return view ('charts',compact('data'));
         // echo $send;
             // echo $send;
             // echo $Hakhir;
