@@ -24,7 +24,7 @@
 		</div>
 		<div class="container">
 			<div class="forecast-container" style=" margin:30px 0 30px 0; padding:20px;">
-				<form action="{{url('/send')}}" method="POST" enctype="multipart/form-data">
+				<form action="{{url('/charts/result')}}" method="POST" enctype="multipart/form-data">
 					{{csrf_field() }}
 					<div class="row">
 						<div class="col-md-4">
@@ -32,7 +32,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
 								</div>
-								<input type="date" class="form-control" name="sawal"  aria-label="Username" aria-describedby="basic-addon1">
+								<input type="datetime-local" class="form-control" name="sawal"  aria-label="Username" aria-describedby="basic-addon1">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -40,7 +40,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
 								</div>
-								<input type="date" class="form-control" name="sakhir"  aria-label="Username" aria-describedby="basic-addon1">
+								<input type="datetime-local" class="form-control" name="sakhir"  aria-label="Username" aria-describedby="basic-addon1">
 							</div>
 						</div>
 						<div class="col-md-4">

@@ -163,14 +163,17 @@ class SensorController extends Controller
     public function searchDate(Request $request)
     {
         $Sawal = strtotime($request->sawal);
-        $Dawal = date('d',$Sawal);
-        $Hawal = date('h',$Sawal);
+        $Dawal = date('Y-m-d',$Sawal);
+        $Hawal = date('h:m',$Sawal);
 
         $Sakhir = strtotime($request->sakhir);
-        $Dakhir = date('d',$Sakhir);
-        $Hakhir = date('h',$Sakhir);
+        $Dakhir = date('Y-m-d',$Sakhir);
+        $Hakhir = date('h:m',$Sakhir);
 
+        $Makhir = date('Y-m-d H:i:s',$Sakhir);
+        $Mawal = date('Y-m-d H:i:s',$Sawal);
 
+        
         // echo $Dawal;
         // echo $Dakhir;        
         // $send = DB::select(
@@ -191,9 +194,26 @@ class SensorController extends Controller
     //    ->whereRaw('DAY(created_at) >= ?', [$Dakhir])
     //    ->get();        
 
-            $data = Sensor::whereDay('created_at','>=', $Dawal)
-            ->whereDay('created_at','<=',$Dakhir)
-            ->get();
+            // $data = Sensor::whereDay('created_at','>=', $Dawal)
+            // ->whereDay('created_at','<=',$Dakhir)
+            // ->get();
+
+            // $sensor=DB::table('sensor')
+            // ->whereRaw('DAY(created_at) >= ?', [$Dawal])
+            // ->whereRaw('DAY(created_at) >= ?', [$Hawal])
+            // ->whereRaw('DAY(created_at) <=?', [$Dakhir])
+            // ->whereRaw('DAY(created_at) <= ?', [$Hakhir])
+            // ->get();
+
+            $data = DB::table('sensor')
+                    //   ->whereDate('created_at','>=',$Dawal)
+                    //   ->whereTime('created_at','>=',$Hawal)
+                    //   ->whereDate('created_at','<=',$Dakhir)
+                    //   ->whereTime('created_at','<=',$Hakhir)
+                      ->whereBetween('created_at',[$Mawal, $Makhir])
+                      ->get();            
+            // return $sensor;
+
         // $send = DB::select('
         // DB::raw('SELECT * 
         // FROM sensor 
@@ -205,6 +225,7 @@ class SensorController extends Controller
         // $send =DB::select(
         // DB::raw('SELECT * FROM sensor WHERE DAY('created_at','>=',$Hawal) AND DAY(created_at)<=$Hakhir')
         // // );
+        // return redirect();
         return view ('charts',compact('data'));
         // echo $send;
             // echo $send;
