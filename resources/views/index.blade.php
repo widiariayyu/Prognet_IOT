@@ -57,7 +57,7 @@
 				@endif
 			</div>	
 		</div>
-
+		
 		<div class="fullwidth-block">
 		<div class="container" style="margin-bottom:110px; padding-top:10px; width:fit-content; border: solid 2px #009ad8; ">
 				<h2 id="value-sensor">Data Refresh For <service></service> Minutes</h2>
@@ -71,7 +71,7 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="degree">
-									<div class="num "><span id="hujan"></span> {{ $wth->wind }} m/s</div>
+									<div class="num "><span id="hujan"></span> <wind></wind>m/s</div>
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{ asset('theme/images/wind.png')}}" alt="">
 									</div>	
@@ -86,17 +86,15 @@
 							<div class="forecast-content">
 								<div class="degree">
 									<div class="num">
-										<span id="rainfall"></span> {{ $wth->rainfalls }} 
+										<span id="rainfall"></span> <rain></rain> 
 									</div>
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{asset('theme/images/humidity.png')}}" alt="">
 									</div>	
 								</div>
-								@if ( $wth->rainfalls  < 500)
-								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">Status: Rain </span>
-								@else 
-								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icon-umberella.png')}} alt="">Status: Not Rain </span>
-								@endif
+								{{-- @if ( $wth->rainfalls  < 500) --}}
+								<span id="rain-status"></span>
+								
 							</div>
 						</div>
 					</div>
@@ -114,11 +112,11 @@
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{ asset('theme/images/thermometer-blue.png')}}" alt="">
 									</div>
-									<div class="num" ><h5>{{ $wth->temperatures }}<sup>o</sup>C</h5></div>
+									<div class="num" ><h5><tempe></tempe><sup>o</sup>C</h5></div>
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{ asset('theme/images/humid.png')}}" alt="">
 									</div>
-									<div class="num" ><h5>{{ $wth->humidities }} %</h5></div>
+									<div class="num" ><h5><humi></humi> %</h5></div>
 								</div>	
 							</div>
 						</div>
@@ -129,13 +127,14 @@
 							<div class="forecast-content">
 								<div class="degree">
 									<div class="num">
-										<span id="kelembaban"></span> {{ $wth->intensity }}
+										<span id="kelembaban"></span><inten></inten>
 									</div>
 									<div class="forecast-icon">
 										<img class="icon-sensor" src="{{asset('theme/images/sun.png')}}" alt="">
 									</div>	
 								</div>
-								@if ( $wth->intensity  < 1 )
+								<span id="inten-status"></span>
+								{{-- @if ( $wth->intensity  < 1 )
 								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/moon.png')}} alt=""> Status: Dark</span>
 								@elseif ($wth->intensity  < 11)
 								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-1.svg')}} alt=""> Status: Twilight</span>
@@ -147,7 +146,7 @@
 								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-3.svg')}} alt=""> Status: Full Daylight </span>
 								@elseif ($wth->intensity  > 10753)
 								<span><i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-2.svg')}} alt=""> Status: Sunlight </span>
-								@endif
+								@endif --}}
 							</div>
 						</div>
 					</div>		
@@ -155,7 +154,6 @@
 		
 			</div>	
 		</div>
-
 		<main class="main-content">
 			<div class="fullwidth-block">
 				<div class="container">
@@ -211,7 +209,7 @@
         </div>
 		<footer class="site-footer">
 			<div class="container">
-				<div class="row justify-content-around">
+				<div class="d-flex justify-content-around">
 					<div class="social-links">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
@@ -219,7 +217,7 @@
 						<a href="#"><i class="fa fa-pinterest"></i></a>
 					</div>
 				</div>
-				<p class="row justify-content-around" style="padding-top:15px;">Copyright 2018 Weather Stations. All rights reserved</p>
+				<p class="d-flex justify-content-around" style="padding-top:15px;">Copyright 2018 Weather Stations. All rights reserved</p>
 			</div>
 		</footer>
 	@endforeach

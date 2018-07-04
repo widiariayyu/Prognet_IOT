@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TI-TC') }}</title>
+    <title>{{ config('app.name','Weather Station') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,7 +22,7 @@
     
 </head>
 <body>
-    <div id="app" style="background-color:#212529;">
+    <div id="app" style="background-color:#212529; height:100vh;" class="img-fluid">
         <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

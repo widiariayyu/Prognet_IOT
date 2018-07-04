@@ -61,6 +61,8 @@
 		
         
         <script>
+			//function firebase(){
+				//alert("tes")
 				var config = {
 					apiKey: "AIzaSyD31ZLIBbyPB4UFYCkzebSlcL7AmniZgPg",
 					authDomain: "weatherstation-97401.firebaseapp.com",
@@ -72,9 +74,15 @@
 				firebase.initializeApp(config);
 				var db = firebase.database();
 				var rootRef = db.ref('service');
+				var woodRef = db.ref('user');
 				
 				var ab = document.querySelector('service');
-				var hasil;
+				var rain = document.querySelector('rain');
+				var wind = document.querySelector('wind');
+				var tempe = document.querySelector('tempe');
+				var humi = document.querySelector('humi');
+				var intensity = document.querySelector('inten');
+
 
 				$('#save_btn').click(function(){
 					
@@ -86,18 +94,54 @@
 
 				rootRef.on('value',function(snapshot){
 					hasil = snapshot.val();
-					//var waktu = data.waktu();
-					//ab = waktu / 60;
-					//hasil =( data / 60);
-					ab.innerHTML =  hasil.waktu / 60;
-					console.log(snapshot.val());
+					//ab.innerHTML =  hasil.waktu / 60;
+					console.log('hasil = '+hasil);
 				})
+				
+				woodRef.on('value',function(snapshot){
+					var rainfalls=snapshot.child("-LGLgvgs3llIkzZxtvtq/rainfalls").val();
+					rain.innerHTML =  rainfalls
+					var inten=snapshot.child("-LGLgvgs3llIkzZxtvtq/intensity").val();
+					intensity.innerHTML = inten
+					//console.log(inten);
+
+					//console.log('#st_hujan');
+					humi.innerHTML = snapshot.child("-LGLgvgs3llIkzZxtvtq/humidities").val();
+					rain_sta = snapshot.child("-LGLgvgs3llIkzZxtvtq/rain_status").val();
+					tempe.innerHTML = snapshot.child("-LGLgvgs3llIkzZxtvtq/temperatures").val();
+					wind.innerHTML = snapshot.child("-LGLgvgs3llIkzZxtvtq/wind").val();
+					
+					//console.log(rainfls,humi,rain_sta,inten,tempe,wind);
+					if(rainfalls<500){
+						$('#rain-status').html('<i  class="wi wi-wind wi-from-e"></i><img id="rain-image" src={{asset('theme/images/icon-umberella.png')}} alt="">Status: Rain')
+						
+					}else{
+						$('#rain-status').html('<i  class="wi wi-wind wi-from-e"></i><img id="rain-image" src={{asset('theme/images/icon-umberella.png')}} alt="">Status: Not Rain')
+						
+					}
+
+					if(inten<1){
+						$('#inten-status').html('<i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/moon.png')}} alt=""> Status: Dark');
+					}else if(inten<11){
+						$('#inten-status').html('<i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-1.svg')}} alt=""> Status: Twilight');
+					}else if(inten<108){
+						$('#inten-status').html('<i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-7.svg')}} alt=""> Status: Very Dark Day');
+					}else if(inten<1076){
+						$('#inten-status').html('<i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-6.svg')}} alt=""> Status: Overcast Day');
+					}else if(inten<10753){
+						$('#inten-status').html('<i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-3.svg')}} alt=""> Status: Full Daylight');
+					}else if(inten> 10753){
+						$('#inten-status').html('<i class="wi wi-wind wi-from-e"></i><img src={{asset('theme/images/icons/icon-2.svg')}} alt=""> Status: Sunglight');
+					}
+
+				})
+			//}
 				
 		</script>
 
 		<script>
 			jQuery(document).ready(function( $ ) {
-
+				firebase()
 				// custom code
 				$('.gallery-popup').magnificPopup({
 					type: 'image',
